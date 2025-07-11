@@ -383,9 +383,6 @@ type
   {$ELSE}
   //: Base class for all tags.
   {$ENDIF}
-
-  { TTag }
-
   TTag = class(TComponent)
   private
     FQueuedData:TList;
