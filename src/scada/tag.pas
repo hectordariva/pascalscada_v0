@@ -383,6 +383,9 @@ type
   {$ELSE}
   //: Base class for all tags.
   {$ENDIF}
+
+  { TTag }
+
   TTag = class(TComponent)
   private
     FQueuedData:TList;
@@ -926,6 +929,7 @@ type
 
     function CountObjectsLinkedWithTagChangeHandler:Integer;
     function GetObjectLinkedWithTagChangeHandler(Index:Integer):TObject;
+    procedure ForceNotifyChange;
 
     property TagGUID:AnsiString read PGUID;
   end;
@@ -1199,6 +1203,11 @@ begin
     Result:= TObject(TMethod(FChangeNotificationList[Index]).Data);
   end;
 
+end;
+
+procedure TTag.ForceNotifyChange;
+begin
+  NotifyChange;
 end;
 
 procedure TTag.NotifyChange;
